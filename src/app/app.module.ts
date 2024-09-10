@@ -7,10 +7,16 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { SharedModule } from './shared/shared.module';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { httpAuthInterceptor } from './core/interceptors/http-auth.interceptor';
+import { AppCoreModule } from './core';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, SharedModule.forRoot()],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AppCoreModule,
+    SharedModule.forRoot(),
+  ],
   providers: [
     provideAnimationsAsync('animations'),
     provideHttpClient(withInterceptors([httpAuthInterceptor])),
