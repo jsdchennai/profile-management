@@ -1,0 +1,22 @@
+<mat-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup" label="Basic Details">
+    <app-personal-info-form></app-personal-info-form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Education">
+    <app-education-form></app-education-form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Work History">
+    <app-work-history-form></app-work-history-form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Skills">
+    <app-skills-form></app-skills-form>
+  </mat-step>
+  <!-- <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step> -->
+</mat-stepper>

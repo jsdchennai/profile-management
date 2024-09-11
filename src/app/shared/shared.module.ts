@@ -21,6 +21,7 @@ const SHARED_MODULES = [
   MatButtonModule,
   MatDialogModule,
   MatProgressSpinnerModule,
+  MatStepperModule,
 ];
 
 @NgModule({
