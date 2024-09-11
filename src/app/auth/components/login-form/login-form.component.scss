@@ -1,3 +1,26 @@
-.auth-card {
-  width: 450px;
+.login-btn-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+p {
+  margin-bottom: 0px;
+}
+
+.sign-up-link {
+  font-size: 14px;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  color: blue;
+}
+
+a:visited {
+  color: blue;
 }

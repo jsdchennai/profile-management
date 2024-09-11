@@ -37,7 +37,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   providers: [
     provideAnimationsAsync('animations'),
     provideHttpClient(withInterceptors([httpAuthInterceptor])),
-
     { provide: ErrorStateMatcher, useClass: MyErrorStateMatcher },
   ],
   bootstrap: [AppComponent],

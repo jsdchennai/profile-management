@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AlertComponent } from './components/alert/alert.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const SHARED_MODULES = [
   CommonModule,
@@ -19,6 +20,7 @@ const SHARED_MODULES = [
   MatFormFieldModule,
   MatButtonModule,
   MatDialogModule,
+  MatProgressSpinnerModule,
 ];
 
 @NgModule({

@@ -40,13 +40,8 @@ export class DialogService {
       .pipe(map((result) => result === 'true'));
   }
 
-  openAlert(
-    message: string,
-    title = 'Alert',
-    type = 'error',
-    button = 'OK'
-  ): void {
+  openAlert(message: string, title = 'Alert', type = 'error', button = 'OK') {
     const config = { ...this.alertConfig, message, title, type, button };
-    this.dialog.open(AlertComponent, { data: config });
+    return this.dialog.open(AlertComponent, { data: config });
   }
 }

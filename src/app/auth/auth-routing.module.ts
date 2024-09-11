@@ -4,12 +4,17 @@ import { LoginPageComponent, SignUpPageComponent } from './containers';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'login',
     component: LoginPageComponent,
   },
   {
     path: 'sign-up',
     component: SignUpPageComponent,
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
   },
 ];
 

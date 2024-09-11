@@ -1,10 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
@@ -31,8 +26,6 @@ export class LoginFormComponent {
     if (this.loginForm.invalid) {
       return;
     }
-
-    console.log(this.loginForm.value);
 
     this.submitted.emit(this.loginForm.value);
   }

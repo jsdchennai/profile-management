@@ -14,21 +14,21 @@ export class LoginPageComponent implements OnInit {
   private router = inject(Router);
   private dialogService = inject(DialogService);
 
-  login(credentials: Credentials) {
-    this.authService.login(credentials).subscribe(
-      (res) => {
+  login(credentials: Credentials): void {
+    this.authService.login(credentials).subscribe({
+      next: (res) => {
         localStorage.setItem('name', res.name);
         localStorage.setItem('email', res.email);
         localStorage.setItem('token', res.token);
         this.router.navigateByUrl('/profile');
       },
-      (err) => {
+      error: (err) => {
         this.dialogService.openAlert(err);
-      }
-    );
+      },
+    });
   }
 
-  checkUserLoggedIn() {
+  checkUserLoggedIn(): void {
     let token: string = localStorage.getItem('token');
 
     if (token != null) {
