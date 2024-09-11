@@ -1,1 +1,39 @@
-<p>login-form works!</p>
+<mat-card appearance="outlined" class="auth-card">
+  <mat-card-content>
+    <form autocomplete="off" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="width-100" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          placeholder="Enter your email"
+          formControlName="email"
+        />
+
+        @if (emailControl?.hasError("email")) {
+        <mat-error>Please enter a valid email address</mat-error>
+        } @if (emailControl?.hasError('required')) {
+        <mat-error>Email is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+
+      <br />
+
+      <mat-form-field class="width-100" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          placeholder="Enter your password"
+          formControlName="password"
+        />
+
+        @if (passwordControl?.hasError('required')) {
+        <mat-error>Password is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+
+      <button mat-flat-button type="submit">Login</button>
+    </form>
+  </mat-card-content>
+</mat-card>
