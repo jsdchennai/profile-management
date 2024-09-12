@@ -17,3 +17,13 @@ body {
 .auth-card {
   width: 450px;
 }
+
+.form-row {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  mat-form-field {
+    padding-right: 10px;
+  }
+}

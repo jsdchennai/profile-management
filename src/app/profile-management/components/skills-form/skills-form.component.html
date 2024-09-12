@@ -1,12 +1,14 @@
 <mat-card appearance="outlined">
   <mat-card-content>
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Skill</mat-label>
-      <input matInput placeholder="Enter the skill" />
-    </mat-form-field>
+    <div [formGroup]="formGroup">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Skill</mat-label>
+        <input matInput placeholder="Enter the skill" formControlName="skill" />
+      </mat-form-field>
 
-    <br />
+      <br />
 
-    <button mat-flat-button type="submit">Save</button>
+      <button mat-flat-button type="submit">Save</button>
+    </div>
   </mat-card-content>
 </mat-card>

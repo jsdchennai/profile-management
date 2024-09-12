@@ -5,9 +5,11 @@ import { ProfileManagementRoutingModule } from './profile-management-routing.mod
 import { components } from './components';
 import { containers } from './containers';
 import { SharedModule } from '../shared/shared.module';
+import { FormGroupDirective } from '@angular/forms';
 
 @NgModule({
   declarations: [...components, ...containers],
-  imports: [CommonModule, ProfileManagementRoutingModule, SharedModule],
+  imports: [ProfileManagementRoutingModule, SharedModule],
+  providers: [FormGroupDirective],
 })
 export class ProfileManagementModule {}

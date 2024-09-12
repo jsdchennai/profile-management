@@ -1,33 +1,64 @@
 <mat-card appearance="outlined">
   <mat-card-content>
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Job Title</mat-label>
-      <input matInput placeholder="Enter the job title" />
-    </mat-form-field>
+    <div [formGroup]="formGroup">
+      <ng-container formArrayName="workHistoryFormArray">
+        <ng-container
+          *ngFor="
+            let workHistoryForm of workHistoryArray.controls;
+            let i = index
+          "
+        >
+          <ng-container [formGroupName]="i">
+            <div class="form-row">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Job Title</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter the job title"
+                  formControlName="jobTitle"
+                />
+              </mat-form-field>
 
-    <br />
+              <br />
 
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Company</mat-label>
-      <input matInput placeholder="Enter the company" />
-    </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Company</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter the company"
+                  formControlName="company"
+                />
+              </mat-form-field>
 
-    <br />
+              <br />
 
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Start Date</mat-label>
-      <input matInput placeholder="Enter the start date" />
-    </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Start Date</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter the start date"
+                  formControlName="startDate"
+                />
+              </mat-form-field>
 
-    <br />
+              <br />
 
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>End Date</mat-label>
-      <input matInput placeholder="Enter the end date" />
-    </mat-form-field>
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>End Date</mat-label>
+                <input
+                  matInput
+                  placeholder="Enter the end date"
+                  formControlName="endDate"
+                />
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
 
-    <br />
+      <button mat-flat-button type="submit">Save</button>
+    </div>
 
-    <button mat-flat-button type="submit">Save</button>
+    <button mat-flat-button (click)="addWorkHistory()">Add</button>
   </mat-card-content>
 </mat-card>

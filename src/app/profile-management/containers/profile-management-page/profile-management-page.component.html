@@ -1,15 +1,17 @@
 <mat-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup" label="Basic Details">
+  <mat-step [stepControl]="basicDetailsForm" label="Basic Details">
     <app-personal-info-form></app-personal-info-form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" label="Education">
+  <mat-step [stepControl]="educationDetailsForm" label="Education">
     <app-education-form></app-education-form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" label="Work History">
-    <app-work-history-form></app-work-history-form>
+  <mat-step [stepControl]="workHistoryFormGroup" label="Work History">
+    <app-work-history-form
+      [formGroup]="workHistoryFormGroup"
+    ></app-work-history-form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" label="Skills">
-    <app-skills-form></app-skills-form>
+  <mat-step [stepControl]="skillsForm" label="Skills">
+    <app-skills-form [formGroup]="skillsForm"></app-skills-form>
   </mat-step>
   <!-- <mat-step>
     <ng-template matStepLabel>Done</ng-template>
