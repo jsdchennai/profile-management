@@ -1,10 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormGroup,
-  FormGroupDirective,
-} from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-work-history-form',
@@ -12,12 +7,12 @@ import {
   styleUrl: './work-history-form.component.scss',
 })
 export class WorkHistoryFormComponent implements OnInit {
-  @Input() formGroup: FormGroup;
+  @Input() workHistoryForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
   get workHistoryArray() {
-    return this.formGroup.controls['workHistoryFormArray'] as FormArray;
+    return this.workHistoryForm.get('workHistoryArray') as FormArray;
   }
 
   addWorkHistory() {

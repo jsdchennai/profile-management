@@ -3,15 +3,17 @@
     <app-personal-info-form></app-personal-info-form>
   </mat-step>
   <mat-step [stepControl]="educationDetailsForm" label="Education">
-    <app-education-form></app-education-form>
+    <app-education-form
+      [educationDetailsForm]="educationDetailsForm"
+    ></app-education-form>
   </mat-step>
-  <mat-step [stepControl]="workHistoryFormGroup" label="Work History">
+  <mat-step [stepControl]="workHistoryForm" label="Work History">
     <app-work-history-form
-      [formGroup]="workHistoryFormGroup"
+      [workHistoryForm]="workHistoryForm"
     ></app-work-history-form>
   </mat-step>
   <mat-step [stepControl]="skillsForm" label="Skills">
-    <app-skills-form [formGroup]="skillsForm"></app-skills-form>
+    <app-skills-form [skillsForm]="skillsForm"></app-skills-form>
   </mat-step>
   <!-- <mat-step>
     <ng-template matStepLabel>Done</ng-template>

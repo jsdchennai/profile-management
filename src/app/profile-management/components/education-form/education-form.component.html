@@ -1,19 +1,36 @@
 <mat-card appearance="outlined">
   <mat-card-content>
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Degree</mat-label>
-      <input matInput placeholder="Enter the degree" />
-    </mat-form-field>
+    <div [formGroup]="educationDetailsForm">
+      <ng-container formArrayName="educationDetailsArray">
+        <ng-container
+          *ngFor="
+            let educationDetails of educationDetailsArray.controls;
+            let i = index
+          "
+        >
+          <ng-container [formGroupName]="i">
+            <div class="form-row">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Degree</mat-label>
+                <input matInput placeholder="Enter the degree" />
+              </mat-form-field>
+
+              <br />
+
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Institution</mat-label>
+                <input matInput placeholder="Enter the institution" />
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+
+      <button mat-flat-button type="submit">Save</button>
+    </div>
 
     <br />
 
-    <mat-form-field class="example-full-width" appearance="outline">
-      <mat-label>Institution</mat-label>
-      <input matInput placeholder="Enter the institution" />
-    </mat-form-field>
-
-    <br />
-
-    <button mat-flat-button type="submit">Save</button>
+    <button mat-flat-button (click)="addEducationDetails()">Add</button>
   </mat-card-content>
 </mat-card>

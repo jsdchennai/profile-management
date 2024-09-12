@@ -1,10 +1,20 @@
 <mat-card appearance="outlined">
   <mat-card-content>
-    <div [formGroup]="formGroup">
-      <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Skill</mat-label>
-        <input matInput placeholder="Enter the skill" formControlName="skill" />
-      </mat-form-field>
+    <div [formGroup]="skillsForm">
+      <ng-container formArrayName="skillsArray">
+        <ng-container *ngFor="let skill of skillsArray.controls; let i = index">
+          <ng-container [formGroupName]="i">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Skill</mat-label>
+              <input
+                matInput
+                placeholder="Enter the skill"
+                formControlName="skill"
+              />
+            </mat-form-field>
+          </ng-container>
+        </ng-container>
+      </ng-container>
 
       <br />
 

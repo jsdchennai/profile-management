@@ -1,12 +1,9 @@
 <mat-card appearance="outlined">
   <mat-card-content>
-    <div [formGroup]="formGroup">
-      <ng-container formArrayName="workHistoryFormArray">
+    <div [formGroup]="workHistoryForm">
+      <ng-container formArrayName="workHistoryArray">
         <ng-container
-          *ngFor="
-            let workHistoryForm of workHistoryArray.controls;
-            let i = index
-          "
+          *ngFor="let workHistory of workHistoryArray.controls; let i = index"
         >
           <ng-container [formGroupName]="i">
             <div class="form-row">

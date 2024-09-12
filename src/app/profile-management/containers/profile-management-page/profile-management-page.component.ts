@@ -1,10 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-management-page',
@@ -16,38 +11,36 @@ export class ProfileManagementPageComponent implements OnInit {
 
   isLinear = false;
 
-  profileManagementForm;
+  profileManagementForm: FormGroup;
 
   get basicDetailsForm() {
-    return this.profileManagementForm.get('basicDetialsForm');
+    return this.profileManagementForm.get('basicDetialsForm') as FormGroup;
   }
 
   get educationDetailsForm() {
-    return this.profileManagementForm.get('educationDetailsForm');
+    return this.profileManagementForm.get('educationDetailsForm') as FormGroup;
   }
 
-  get workHistoryFormGroup() {
-    return this.profileManagementForm.get('workHistoryFormGroup');
+  get workHistoryForm() {
+    return this.profileManagementForm.get('workHistoryForm') as FormGroup;
   }
 
   get skillsForm() {
-    return this.profileManagementForm.controls.skillsForm as FormGroup;
+    return this.profileManagementForm.get('skillsForm') as FormGroup;
   }
 
   ngOnInit(): void {
     this.profileManagementForm = this.formBuilder.group({
       basicDetailsForm: this.formBuilder.group({}),
-      educationDetailsForm: this.formBuilder.group({}),
-      workHistoryFormGroup: this.formBuilder.group({
-        workHistoryFormArray: this.formBuilder.array([]),
+      educationDetailsForm: this.formBuilder.group({
+        educationDetailsArray: this.formBuilder.array([]),
+      }),
+      workHistoryForm: this.formBuilder.group({
+        workHistoryArray: this.formBuilder.array([]),
       }),
       skillsForm: this.formBuilder.group({
-        skill: new FormControl(''),
+        skillsArray: this.formBuilder.array([]),
       }),
     });
-
-    // setInterval(() => {
-    //   console.log(this.profileManagementForm.value);
-    // }, 5000);
   }
 }
