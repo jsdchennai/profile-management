@@ -13,25 +13,21 @@
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Degree</mat-label>
                 <input
-                  #input
+                  #degreeInput
                   matInput
                   placeholder="Enter the degree"
                   formControlName="degree"
-                  [matAutocomplete]="auto"
-                  (input)="onInput(input.value)"
+                  [matAutocomplete]="degreeAuto"
+                  (input)="onInputDegree(degreeInput.value)"
                 />
 
-                <mat-autocomplete #auto="matAutocomplete">
+                <mat-autocomplete #degreeAuto="matAutocomplete">
                   @for (option of filteredDegrees; track option) {
                   <mat-option [value]="option.acronym">{{
                     option.acronym
                   }}</mat-option>
                   }
                 </mat-autocomplete>
-
-                <!-- @if (getControl(i, "degree").hasError('required')) {
-                <mat-error>Please enter a degree</mat-error>
-                } -->
 
                 @if (checkError(i, "degree", "required")) {
                 <mat-error>Please enter a degree</mat-error>
@@ -43,10 +39,25 @@
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Institution</mat-label>
                 <input
+                  #institutionInput
                   matInput
                   placeholder="Enter the institution"
                   formControlName="institution"
+                  [matAutocomplete]="institutionAuto"
+                  (input)="onInputInstituion(institutionInput.value)"
                 />
+
+                <mat-autocomplete #institutionAuto="matAutocomplete">
+                  @for (option of filteredInstitutions; track option) {
+                  <mat-option [value]="option.name">{{
+                    option.name
+                  }}</mat-option>
+                  }
+                </mat-autocomplete>
+
+                @if (checkError(i, "institution", "required")) {
+                <mat-error>Please enter a institution</mat-error>
+                }
               </mat-form-field>
             </div>
           </ng-container>

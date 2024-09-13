@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 import { Degree } from '../../../models';
+import { Institution } from '../../../models/institution';
 
 @Component({
   selector: 'app-education-form',
@@ -17,11 +18,16 @@ import { Degree } from '../../../models';
 export class EducationFormComponent implements OnInit {
   filteredDegrees: Degree[] = [];
 
+  filteredInstitutions: Institution[] = [];
+
   @Input()
   public educationDetailsForm: FormGroup;
 
   @Input()
   public degrees: Degree[];
+
+  @Input()
+  public institutions: Institution[];
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -50,10 +56,18 @@ export class EducationFormComponent implements OnInit {
     this.educationDetailsArray.removeAt(index);
   }
 
-  onInput(value: string) {
+  onInputDegree(value: string) {
     const filterValue = value.toLowerCase();
     this.filteredDegrees = this.degrees.filter((degree) =>
       degree.acronym.toLowerCase().includes(filterValue)
+    );
+  }
+
+  onInputInstituion(value: string) {
+    console.log(value);
+    const filterValue = value.toLowerCase();
+    this.filteredInstitutions = this.institutions.filter((institution) =>
+      institution.name.toLowerCase().includes(filterValue)
     );
   }
 
