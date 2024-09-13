@@ -21,10 +21,25 @@
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Company</mat-label>
                 <input
+                  #companyInput
                   matInput
                   placeholder="Enter the company"
                   formControlName="company"
+                  [matAutocomplete]="companyAuto"
+                  (input)="onInputCompany(companyInput.value)"
                 />
+
+                <mat-autocomplete #companyAuto="matAutocomplete">
+                  @for (option of filteredCompanies; track option) {
+                  <mat-option [value]="option.name">{{
+                    option.name
+                  }}</mat-option>
+                  }
+                </mat-autocomplete>
+
+                @if (checkError(i, "company", "required")) {
+                <mat-error>Please enter a company</mat-error>
+                }
               </mat-form-field>
 
               <br />
@@ -33,9 +48,15 @@
                 <mat-label>Start Date</mat-label>
                 <input
                   matInput
-                  placeholder="Enter the start date"
+                  [matDatepicker]="startDatepicker"
                   formControlName="startDate"
                 />
+
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="startDatepicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #startDatepicker></mat-datepicker>
               </mat-form-field>
 
               <br />
@@ -44,9 +65,15 @@
                 <mat-label>End Date</mat-label>
                 <input
                   matInput
-                  placeholder="Enter the end date"
+                  [matDatepicker]="endDatepicker"
                   formControlName="endDate"
                 />
+
+                <mat-datepicker-toggle
+                  matIconSuffix
+                  [for]="endDatepicker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #endDatepicker></mat-datepicker>
               </mat-form-field>
             </div>
           </ng-container>

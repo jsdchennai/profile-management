@@ -1,6 +1,8 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { importProvidersFrom } from '@angular/core';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCardModule } from '@angular/material/card';
@@ -12,6 +14,9 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 const SHARED_MODULES = [
   CommonModule,
   FormsModule,
@@ -26,6 +31,7 @@ const SHARED_MODULES = [
   MatStepperModule,
   MatIconModule,
   MatAutocompleteModule,
+  MatDatepickerModule,
 ];
 
 @NgModule({
@@ -37,7 +43,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule,
-      providers: [],
+      providers: [importProvidersFrom(MatNativeDateModule)],
     };
   }
 }

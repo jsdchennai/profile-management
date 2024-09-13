@@ -14,4 +14,8 @@ export class ProfileManagementService {
   getInstitutions() {
     return this.http.get('/institutions');
   }
+
+  getCompanies() {
+    return this.http.get('/companies');
+  }
 }
