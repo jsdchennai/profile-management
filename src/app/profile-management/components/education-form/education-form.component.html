@@ -13,43 +13,30 @@
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Degree</mat-label>
                 <input
+                  #input
                   matInput
                   placeholder="Enter the degree"
                   formControlName="degree"
                   [matAutocomplete]="auto"
+                  (input)="onInput(input.value)"
                 />
 
                 <mat-autocomplete #auto="matAutocomplete">
-                  @for (option of filteredOptions | async; track option) {
-                  <mat-option [value]="option">{{ option }}</mat-option>
+                  @for (option of filteredDegrees; track option) {
+                  <mat-option [value]="option.acronym">{{
+                    option.acronym
+                  }}</mat-option>
                   }
                 </mat-autocomplete>
 
                 <!-- @if (getControl(i, "degree").hasError('required')) {
                 <mat-error>Please enter a degree</mat-error>
                 } -->
+
+                @if (checkError(i, "degree", "required")) {
+                <mat-error>Please enter a degree</mat-error>
+                }
               </mat-form-field>
-
-              <!----->
-
-              <!-- <mat-form-field class="example-full-width">
-                <mat-label>Number</mat-label>
-                <input
-                  type="text"
-                  placeholder="Pick one"
-                  aria-label="Number"
-                  matInput
-                  [formControl]="myControl"
-                  [matAutocomplete]="auto"
-                />
-                <mat-autocomplete #auto="matAutocomplete">
-                  @for (option of filteredOptions | async; track option) {
-                  <mat-option [value]="option">{{ option }}</mat-option>
-                  }
-                </mat-autocomplete>
-              </mat-form-field> -->
-
-              <!------>
 
               <br />
 

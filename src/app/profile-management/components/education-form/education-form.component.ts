@@ -15,8 +15,7 @@ import { Degree } from '../../../models';
   styleUrl: './education-form.component.scss',
 })
 export class EducationFormComponent implements OnInit {
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
+  filteredDegrees: Degree[] = [];
 
   @Input()
   public educationDetailsForm: FormGroup;
@@ -39,44 +38,26 @@ export class EducationFormComponent implements OnInit {
     this.educationDetailsArray.push(educationDetails);
   }
 
-  checkError(index: number, control: string, error: string): boolean {
-    return this.educationDetailsArray.at(index).get(control).hasError(error);
-  }
-
   getControl(index: number, control: string) {
     return this.educationDetailsArray.at(index).get(control) as FormControl;
+  }
+
+  checkError(index: number, control: string, error: string) {
+    return this.educationDetailsArray.at(index).get(control).hasError(error);
   }
 
   removeEducationDetails(index: number): void {
     this.educationDetailsArray.removeAt(index);
   }
 
-  private _filter(value) {
-    const filterValue = value.a.toLowerCase();
-
-    return this.options.filter((option) =>
-      option.toLowerCase().includes(filterValue)
+  onInput(value: string) {
+    const filterValue = value.toLowerCase();
+    this.filteredDegrees = this.degrees.filter((degree) =>
+      degree.acronym.toLowerCase().includes(filterValue)
     );
-  }
-
-  private filter(value) {
-    return ['one'];
-  }
-
-  valueChanges() {
-    this.educationDetailsArray.controls.forEach((formGroup: FormGroup) => {
-      console.log('control', formGroup);
-
-      let degreeControl = formGroup.get('degree');
-
-      this.filteredOptions = degreeControl.valueChanges.pipe(
-        map((value) => this.filter(value || ''))
-      );
-    });
   }
 
   ngOnInit(): void {
     this.addEducationDetails();
-    this.valueChanges();
   }
 }
