@@ -12,21 +12,64 @@
             <div class="form-row">
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Degree</mat-label>
-                <input matInput placeholder="Enter the degree" />
+                <input
+                  matInput
+                  placeholder="Enter the degree"
+                  formControlName="degree"
+                  [matAutocomplete]="auto"
+                />
+
+                <mat-autocomplete #auto="matAutocomplete">
+                  @for (option of filteredOptions | async; track option) {
+                  <mat-option [value]="option">{{ option }}</mat-option>
+                  }
+                </mat-autocomplete>
+
+                <!-- @if (getControl(i, "degree").hasError('required')) {
+                <mat-error>Please enter a degree</mat-error>
+                } -->
               </mat-form-field>
+
+              <!----->
+
+              <!-- <mat-form-field class="example-full-width">
+                <mat-label>Number</mat-label>
+                <input
+                  type="text"
+                  placeholder="Pick one"
+                  aria-label="Number"
+                  matInput
+                  [formControl]="myControl"
+                  [matAutocomplete]="auto"
+                />
+                <mat-autocomplete #auto="matAutocomplete">
+                  @for (option of filteredOptions | async; track option) {
+                  <mat-option [value]="option">{{ option }}</mat-option>
+                  }
+                </mat-autocomplete>
+              </mat-form-field> -->
+
+              <!------>
 
               <br />
 
               <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Institution</mat-label>
-                <input matInput placeholder="Enter the institution" />
+                <input
+                  matInput
+                  placeholder="Enter the institution"
+                  formControlName="institution"
+                />
               </mat-form-field>
             </div>
           </ng-container>
         </ng-container>
       </ng-container>
 
-      <button mat-flat-button type="submit">Save</button>
+      <div class="d-flex justify-content-between align-items-center">
+        <button mat-flat-button matStepperPrevious>Back</button>
+        <button mat-flat-button matStepperNext>Save</button>
+      </div>
     </div>
 
     <br />

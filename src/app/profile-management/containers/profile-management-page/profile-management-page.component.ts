@@ -1,5 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ProfileManagementService } from '../../../core/services';
+import { Degree } from '../../../models';
 
 @Component({
   selector: 'app-profile-management-page',
@@ -9,7 +11,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class ProfileManagementPageComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
 
-  isLinear = false;
+  private profileManagementService = inject(ProfileManagementService);
+
+  public isLinear = false;
+
+  public degrees: Degree[] = [];
 
   profileManagementForm: FormGroup;
 
@@ -29,6 +35,15 @@ export class ProfileManagementPageComponent implements OnInit {
     return this.profileManagementForm.get('skillsForm') as FormGroup;
   }
 
+  getDegrees() {
+    this.profileManagementService.getDegrees().subscribe({
+      next: (res: Degree[]) => {
+        this.degrees = res;
+      },
+      error: () => {},
+    });
+  }
+
   ngOnInit(): void {
     this.profileManagementForm = this.formBuilder.group({
       basicDetailsForm: this.formBuilder.group({}),
@@ -42,5 +57,7 @@ export class ProfileManagementPageComponent implements OnInit {
         skillsArray: this.formBuilder.array([]),
       }),
     });
+
+    this.getDegrees();
   }
 }

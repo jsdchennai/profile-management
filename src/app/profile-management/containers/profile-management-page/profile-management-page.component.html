@@ -1,6 +1,8 @@
 <mat-stepper [linear]="isLinear" #stepper>
   <mat-step [stepControl]="basicDetailsForm" label="Basic Details">
-    <app-personal-info-form></app-personal-info-form>
+    <app-personal-info-form
+      [basicDetailsForm]="basicDetailsForm"
+    ></app-personal-info-form>
   </mat-step>
   <mat-step [stepControl]="educationDetailsForm" label="Education">
     <app-education-form

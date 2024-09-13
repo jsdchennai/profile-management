@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-work-history-form',
@@ -7,7 +7,8 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
   styleUrl: './work-history-form.component.scss',
 })
 export class WorkHistoryFormComponent implements OnInit {
-  @Input() workHistoryForm: FormGroup;
+  @Input()
+  public workHistoryForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -17,10 +18,10 @@ export class WorkHistoryFormComponent implements OnInit {
 
   addWorkHistory() {
     const workHistory = this.formBuilder.group({
-      jobTitle: [''],
-      company: [''],
-      startDate: [''],
-      endDate: [''],
+      jobTitle: ['', Validators.required],
+      company: ['', Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
     });
 
     this.workHistoryArray.push(workHistory);

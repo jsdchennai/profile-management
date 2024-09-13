@@ -1,4 +1,81 @@
 {
+  "degrees": [
+    {
+      "id": "1",
+      "degree": "Bachelor of Commerce",
+      "acronym": "B.Com"
+    },
+    {
+      "id": "2",
+      "degree": "Bachelor of Engineering",
+      "acronym": "B.E."
+    },
+    {
+      "id": "3",
+      "degree": "Bachelor of Dental Surgery",
+      "acronym": "BDS"
+    },
+    {
+      "id": "4",
+      "degree": "Bachelor of Medicine and Bachelor of Surgery",
+      "acronym": "MBBS"
+    },
+    {
+      "id": "5",
+      "degree": "Bachelor of Computer Applications",
+      "acronym": "BCA"
+    },
+    {
+      "id": "6",
+      "degree": "Bachelor of Business Administration",
+      "acronym": "BBA"
+    },
+    {
+      "id": "7",
+      "degree": "Master of Business Administration",
+      "acronym": "MBA"
+    },
+    {
+      "id": "8",
+      "degree": "Master of Engineering",
+      "acronym": "M.E."
+    },
+    {
+      "id": "9",
+      "degree": "Master of Technology",
+      "acronym": "M.Tech"
+    },
+    {
+      "id": "10",
+      "degree": "Master of Dental Surgery",
+      "acronym": "MDS"
+    },
+    {
+      "id": "11",
+      "degree": "Doctor of Medicine",
+      "acronym": "MD"
+    },
+    {
+      "id": "12",
+      "degree": "Bachelor in Theology",
+      "acronym": "B.Th"
+    },
+    {
+      "id": "13",
+      "degree": "Master of Theology",
+      "acronym": "M.Th"
+    },
+    {
+      "id": "14",
+      "degree": "Master of Computer Applications",
+      "acronym": "MCA"
+    },
+    {
+      "id": "15",
+      "degree": "Master of Commerce",
+      "acronym": "M.Com"
+    }
+  ],
   "login": [
     {
       "name": "Allen",

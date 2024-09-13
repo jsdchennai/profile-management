@@ -1,9 +1,16 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { filter } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfileManagementService {
+  private http = inject(HttpClient);
 
-  constructor() { }
+  constructor() {}
+
+  getDegrees() {
+    return this.http.get('/degrees');
+  }
 }

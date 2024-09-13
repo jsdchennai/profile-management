@@ -27,3 +27,25 @@ body {
     padding-right: 10px;
   }
 }
+
+.profile-management-card {
+  width: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-control {
+  width: 300px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}

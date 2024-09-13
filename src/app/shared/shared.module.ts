@@ -10,12 +10,12 @@ import { AlertComponent } from './components/alert/alert.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 const SHARED_MODULES = [
   CommonModule,
   FormsModule,
   ReactiveFormsModule,
-
   MatInputModule,
   MatStepperModule,
   MatCardModule,
@@ -24,6 +24,8 @@ const SHARED_MODULES = [
   MatDialogModule,
   MatProgressSpinnerModule,
   MatStepperModule,
+  MatIconModule,
+  MatAutocompleteModule,
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-skills-form',
@@ -7,7 +7,8 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
   styleUrl: './skills-form.component.scss',
 })
 export class SkillsFormComponent implements OnInit {
-  @Input() skillsForm: FormGroup;
+  @Input()
+  public skillsForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -17,7 +18,7 @@ export class SkillsFormComponent implements OnInit {
 
   addSkills() {
     const skillForm = this.formBuilder.group({
-      skill: [''],
+      skill: ['', Validators.required],
     });
     this.skillsArray.push(skillForm);
   }
