@@ -3,6 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileManagementService } from '../../../core/services';
 import { Company, Degree, Skill } from '../../../models';
 import { Institution } from '../../../models/institution';
+import { debounce, debounceTime } from 'rxjs';
+import { ProfileProgressService } from '../../../shared/services';
+
+enum FormStatus {
+  VALID = 'VALID',
+  INVALID = 'INVALID',
+}
 
 @Component({
   selector: 'app-profile-management-page',
@@ -10,7 +17,7 @@ import { Institution } from '../../../models/institution';
   styleUrl: './profile-management-page.component.scss',
 })
 export class ProfileManagementPageComponent implements OnInit {
-  public isLinear: boolean = false;
+  public isLinear: boolean = true;
 
   public degrees: Degree[] = [];
 
@@ -23,6 +30,8 @@ export class ProfileManagementPageComponent implements OnInit {
   profileManagementForm: FormGroup;
 
   private formBuilder = inject(FormBuilder);
+
+  private profileProgressService = inject(ProfileProgressService);
 
   private profileManagementService = inject(ProfileManagementService);
 
@@ -95,6 +104,59 @@ export class ProfileManagementPageComponent implements OnInit {
         skillsArray: this.formBuilder.array([]),
       }),
     });
+  }
+
+  updateProgressValue(value: number) {
+    let progressValue =
+      value + this.profileProgressService.progressValue$.value;
+    this.profileProgressService.setProgressValue(progressValue);
+  }
+
+  listenForStatusChanges() {
+    this.basicDetailsForm.statusChanges
+      .pipe(debounceTime(1000))
+      .subscribe((status) => {
+        if (status == FormStatus.VALID) {
+          this.profileProgressService.setProgressValue(30);
+        }
+      });
+
+    this.educationDetailsForm.statusChanges
+      .pipe(debounceTime(1000))
+      .subscribe((status) => {
+        if (status == FormStatus.VALID) {
+          let value = this.profileProgressService.progressValue$.value + 25;
+          this.profileProgressService.setProgressValue(value);
+        }
+
+        // if (status == FormStatus.INVALID) {
+        //   this.profileProgressService.setProgressValue(-25);
+        // }
+      });
+
+    this.workHistoryForm.statusChanges
+      .pipe(debounceTime(1000))
+      .subscribe((status) => {
+        if (status == FormStatus.VALID) {
+          this.profileProgressService.setProgressValue(25);
+        }
+
+        // if (status == FormStatus.INVALID) {
+        //   this.profileProgressService.setProgressValue(-25);
+        // }
+      });
+
+    this.skillsForm.statusChanges
+      .pipe(debounceTime(1000))
+      .subscribe((status) => {
+        if (status == FormStatus.VALID) {
+          this.profileProgressService.setProgressValue(20);
+        }
+
+        // if (status == FormStatus.INVALID) {
+        //   this.profileProgressService.setProgressValue(-20);
+        // }
+      });
   }
 
   ngOnInit(): void {

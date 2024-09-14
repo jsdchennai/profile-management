@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Company } from '../../../models';
+import { Company, ProgressPercentage } from '../../../models';
+import { ProfileProgressService } from '../../../shared/services';
 
 @Component({
   selector: 'app-work-history-form',
@@ -16,7 +17,17 @@ export class WorkHistoryFormComponent implements OnInit {
   @Input()
   public companies: Company[];
 
-  constructor(private formBuilder: FormBuilder) {}
+  private profileProgressService = inject(ProfileProgressService);
+
+  private formBuilder = inject(FormBuilder);
+
+  onSubmitProgressValue() {
+    let progressValue =
+      ProgressPercentage.workHistoryPercentage +
+      this.profileProgressService.progressValue$.value;
+
+    this.profileProgressService.setProgressValue(progressValue);
+  }
 
   get workHistoryArray() {
     return this.workHistoryForm.get('workHistoryArray') as FormArray;

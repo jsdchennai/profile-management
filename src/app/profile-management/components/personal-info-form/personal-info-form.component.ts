@@ -1,5 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { ProfileProgressService } from '../../../shared/services';
+import { ProgressPercentage } from '../../../models';
 
 @Component({
   selector: 'app-personal-info-form',
@@ -9,4 +11,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PersonalInfoFormComponent {
   @Input()
   public basicDetailsForm: FormGroup;
+
+  private profileProgressService = inject(ProfileProgressService);
+
+  onSubmitProgressValue() {
+    let progressValue =
+      ProgressPercentage.basicDetailsPercentage +
+      this.profileProgressService.progressValue$.value;
+    this.profileProgressService.setProgressValue(progressValue);
+  }
 }

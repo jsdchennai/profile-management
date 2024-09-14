@@ -6,3 +6,4 @@ export * from './degree';
 export * from './institution';
 export * from './company';
 export * from './skill';
+export * from './progress-percentage';

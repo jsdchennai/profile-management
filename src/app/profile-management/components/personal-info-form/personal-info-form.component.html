@@ -30,7 +30,16 @@
 
       <br />
 
-      <button mat-flat-button matStepperNext>Save</button>
+      <div class="d-flex justify-content-end align-items-center">
+        <button
+          mat-flat-button
+          matStepperNext
+          [disabled]="!basicDetailsForm.valid"
+          (click)="onSubmitProgressValue()"
+        >
+          Save
+        </button>
+      </div>
     </div>
   </mat-card-content>
 </mat-card>

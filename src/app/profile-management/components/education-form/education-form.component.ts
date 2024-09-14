@@ -1,14 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
-import { Degree } from '../../../models';
+import { Component, inject, Input, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Degree, ProgressPercentage } from '../../../models';
 import { Institution } from '../../../models/institution';
+import { ProfileProgressService } from '../../../shared/services';
 
 @Component({
   selector: 'app-education-form',
@@ -29,7 +23,9 @@ export class EducationFormComponent implements OnInit {
   @Input()
   public institutions: Institution[];
 
-  constructor(private formBuilder: FormBuilder) {}
+  private formBuilder = inject(FormBuilder);
+
+  private profileProgressService = inject(ProfileProgressService);
 
   get educationDetailsArray() {
     return this.educationDetailsForm.get('educationDetailsArray') as FormArray;
@@ -42,10 +38,6 @@ export class EducationFormComponent implements OnInit {
     });
 
     this.educationDetailsArray.push(educationDetails);
-  }
-
-  getControl(index: number, control: string) {
-    return this.educationDetailsArray.at(index).get(control) as FormControl;
   }
 
   checkError(index: number, control: string, error: string) {
@@ -64,11 +56,17 @@ export class EducationFormComponent implements OnInit {
   }
 
   onInputInstituion(value: string) {
-    console.log(value);
     const filterValue = value.toLowerCase();
     this.filteredInstitutions = this.institutions.filter((institution) =>
       institution.name.toLowerCase().includes(filterValue)
     );
+  }
+
+  onSubmitProgressValue() {
+    let progressValue =
+      ProgressPercentage.educationDetailsPercentage +
+      this.profileProgressService.progressValue$.value;
+    this.profileProgressService.setProgressValue(progressValue);
   }
 
   ngOnInit(): void {

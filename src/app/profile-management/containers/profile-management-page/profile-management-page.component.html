@@ -1,11 +1,21 @@
-<mat-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="basicDetailsForm" label="Basic Details">
+<app-progress-bar></app-progress-bar>
+
+<mat-stepper [linear]="isLinear" labelPosition="bottom" #stepper>
+  <mat-step
+    [stepControl]="basicDetailsForm"
+    label="Basic Details"
+    state="person"
+  >
     <app-personal-info-form
       class="d-flex justify-content-center"
       [basicDetailsForm]="basicDetailsForm"
     ></app-personal-info-form>
   </mat-step>
-  <mat-step [stepControl]="educationDetailsForm" label="Education">
+  <mat-step
+    [stepControl]="educationDetailsForm"
+    label="Education"
+    state="school"
+  >
     <app-education-form
       class="d-flex justify-content-center"
       [educationDetailsForm]="educationDetailsForm"
@@ -13,26 +23,22 @@
       [institutions]="institutions"
     ></app-education-form>
   </mat-step>
-  <mat-step [stepControl]="workHistoryForm" label="Work History">
+  <mat-step
+    [stepControl]="workHistoryForm"
+    label="Work History"
+    state="work_history"
+  >
     <app-work-history-form
       class="d-flex justify-content-center"
       [workHistoryForm]="workHistoryForm"
       [companies]="companies"
     ></app-work-history-form>
   </mat-step>
-  <mat-step [stepControl]="skillsForm" label="Skills">
+  <mat-step [stepControl]="skillsForm" label="Skills" state="list">
     <app-skills-form
       class="d-flex justify-content-center"
       [skillsForm]="skillsForm"
       [skills]="skills"
     ></app-skills-form>
   </mat-step>
-  <!-- <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step> -->
 </mat-stepper>

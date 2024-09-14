@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Skill } from '../../../models';
+import { ProgressPercentage, Skill } from '../../../models';
+import { ProfileProgressService } from '../../../shared/services';
 
 @Component({
   selector: 'app-skills-form',
@@ -14,7 +15,19 @@ export class SkillsFormComponent implements OnInit {
   @Input()
   public skillsForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  private profileProgressService = inject(ProfileProgressService);
+
+  private formBuilder = inject(FormBuilder);
+
+  onSubmitProgressValue() {
+    let progressValue =
+      ProgressPercentage.skillsPercentage +
+      this.profileProgressService.progressValue$.value;
+
+    this.profileProgressService.setProgressValue(progressValue);
+  }
+
+  // constructor(private formBuilder: FormBuilder) {}
 
   get skillsArray() {
     return this.skillsForm.get('skillsArray') as FormArray;

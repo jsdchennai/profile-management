@@ -16,7 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+
 import { components } from './components';
 
 const SHARED_MODULES = [
@@ -34,6 +36,7 @@ const SHARED_MODULES = [
   MatIconModule,
   MatAutocompleteModule,
   MatDatepickerModule,
+  MatProgressBarModule,
 ];
 
 @NgModule({
@@ -45,7 +48,13 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule,
-      providers: [importProvidersFrom(MatNativeDateModule)],
+      providers: [
+        importProvidersFrom(MatNativeDateModule),
+        {
+          provide: STEPPER_GLOBAL_OPTIONS,
+          useValue: { displayDefaultIndicatorType: false },
+        },
+      ],
     };
   }
 }

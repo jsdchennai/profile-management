@@ -23,7 +23,14 @@
 
       <div class="d-flex justify-content-between align-items-center">
         <button mat-flat-button matStepperPrevious>Back</button>
-        <button mat-flat-button matStepperNext>Save</button>
+        <button
+          mat-flat-button
+          matStepperNext
+          [disabled]="!skillsForm.valid"
+          (click)="onSubmitProgressValue()"
+        >
+          Submit
+        </button>
       </div>
     </div>
 
