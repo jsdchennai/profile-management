@@ -10,10 +10,6 @@ import { ProfileProgressService } from '../../../shared/services';
   styleUrl: './education-form.component.scss',
 })
 export class EducationFormComponent implements OnInit {
-  filteredDegrees: Degree[] = [];
-
-  filteredInstitutions: Institution[] = [];
-
   @Input()
   public educationDetailsForm: FormGroup;
 
@@ -46,20 +42,6 @@ export class EducationFormComponent implements OnInit {
 
   removeEducationDetails(index: number): void {
     this.educationDetailsArray.removeAt(index);
-  }
-
-  onInputDegree(value: string) {
-    const filterValue = value.toLowerCase();
-    this.filteredDegrees = this.degrees.filter((degree) =>
-      degree.acronym.toLowerCase().includes(filterValue)
-    );
-  }
-
-  onInputInstituion(value: string) {
-    const filterValue = value.toLowerCase();
-    this.filteredInstitutions = this.institutions.filter((institution) =>
-      institution.name.toLowerCase().includes(filterValue)
-    );
   }
 
   onSubmitProgressValue() {

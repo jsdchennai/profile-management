@@ -10,31 +10,6 @@
         >
           <ng-container [formGroupName]="i">
             <div class="form-row">
-              <!---->
-              <!-- <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Degree</mat-label>
-                <input
-                  #degreeInput
-                  matInput
-                  placeholder="Enter the degree"
-                  formControlName="degree"
-                  [matAutocomplete]="degreeAuto"
-                  (input)="onInputDegree(degreeInput.value)"
-                />
-
-                <mat-autocomplete #degreeAuto="matAutocomplete">
-                  @for (option of filteredDegrees; track option) {
-                  <mat-option [value]="option.acronym">{{
-                    option.acronym
-                  }}</mat-option>
-                  }
-                </mat-autocomplete>
-
-                @if (checkError(i, "degree", "required")) {
-                <mat-error>Please enter a degree</mat-error>
-                }
-              </mat-form-field> -->
-
               <app-auto-complete
                 label="Degree"
                 placeHolder="Enter the degree"
@@ -47,35 +22,7 @@
               >
               </app-auto-complete>
 
-              <!---->
-
               <br />
-
-              <!---->
-
-              <!-- <mat-form-field class="example-full-width" appearance="outline">
-                <mat-label>Institution</mat-label>
-                <input
-                  #institutionInput
-                  matInput
-                  placeholder="Enter the institution"
-                  formControlName="institution"
-                  [matAutocomplete]="institutionAuto"
-                  (input)="onInputInstituion(institutionInput.value)"
-                />
-
-                <mat-autocomplete #institutionAuto="matAutocomplete">
-                  @for (option of filteredInstitutions; track option) {
-                  <mat-option [value]="option.name">{{
-                    option.name
-                  }}</mat-option>
-                  }
-                </mat-autocomplete>
-
-                @if (checkError(i, "institution", "required")) {
-                <mat-error>Please enter a institution</mat-error>
-                }
-              </mat-form-field> -->
 
               <app-auto-complete
                 label="Institution"
@@ -87,8 +34,6 @@
                 [showRequiredValidatorError]="true"
               >
               </app-auto-complete>
-
-              <!---->
             </div>
           </ng-container>
         </ng-container>

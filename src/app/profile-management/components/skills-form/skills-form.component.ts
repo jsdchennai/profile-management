@@ -27,8 +27,6 @@ export class SkillsFormComponent implements OnInit {
     this.profileProgressService.setProgressValue(progressValue);
   }
 
-  // constructor(private formBuilder: FormBuilder) {}
-
   get skillsArray() {
     return this.skillsForm.get('skillsArray') as FormArray;
   }

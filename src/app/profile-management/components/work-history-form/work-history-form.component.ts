@@ -9,8 +9,6 @@ import { ProfileProgressService } from '../../../shared/services';
   styleUrl: './work-history-form.component.scss',
 })
 export class WorkHistoryFormComponent implements OnInit {
-  public filteredCompanies: Company[] = [];
-
   @Input()
   public workHistoryForm: FormGroup;
 
@@ -50,13 +48,6 @@ export class WorkHistoryFormComponent implements OnInit {
 
   removeEducationDetails(index: number): void {
     this.workHistoryArray.removeAt(index);
-  }
-
-  onInputCompany(value: string) {
-    const filterValue = value.toLowerCase();
-    this.filteredCompanies = this.companies.filter((company) =>
-      company.name.toLowerCase().includes(filterValue)
-    );
   }
 
   ngOnInit(): void {

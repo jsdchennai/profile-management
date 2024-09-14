@@ -22,32 +22,6 @@
 
               <br />
 
-              <!------>
-
-              <!-- <mat-form-field class="company-field" appearance="outline">
-                <mat-label>Company</mat-label>
-                <input
-                  #companyInput
-                  matInput
-                  placeholder="Enter the company"
-                  formControlName="company"
-                  [matAutocomplete]="companyAuto"
-                  (input)="onInputCompany(companyInput.value)"
-                />
-
-                <mat-autocomplete #companyAuto="matAutocomplete">
-                  @for (option of filteredCompanies; track option) {
-                  <mat-option [value]="option.name">{{
-                    option.name
-                  }}</mat-option>
-                  }
-                </mat-autocomplete>
-
-                @if (checkError(i, "company", "required")) {
-                <mat-error>Please enter a company</mat-error>
-                }
-              </mat-form-field> -->
-
               <app-auto-complete
                 label="Company"
                 placeHolder="Enter the company"
@@ -60,8 +34,6 @@
                 class="pr-10"
               >
               </app-auto-complete>
-
-              <!------->
 
               <br />
 
