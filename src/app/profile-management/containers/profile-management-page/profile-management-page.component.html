@@ -10,6 +10,8 @@
       class="d-flex justify-content-center"
       [basicDetailsForm]="basicDetailsForm"
     ></app-personal-info-form>
+
+    <button (click)="generatePdf()">generate</button>
   </mat-step>
   <mat-step
     [stepControl]="educationDetailsForm"

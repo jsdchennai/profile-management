@@ -3,8 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileManagementService } from '../../../core/services';
 import { Company, Degree, Skill } from '../../../models';
 import { Institution } from '../../../models/institution';
-import { debounce, debounceTime } from 'rxjs';
+import { debounceTime } from 'rxjs';
 import { ProfileProgressService } from '../../../shared/services';
+
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { TDocumentDefinitions } from 'pdfmake/interfaces';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 enum FormStatus {
   VALID = 'VALID',
@@ -157,6 +162,107 @@ export class ProfileManagementPageComponent implements OnInit {
         //   this.profileProgressService.setProgressValue(-20);
         // }
       });
+  }
+
+  generatePdf(action = 'open') {
+    const documentDefinition: any = this.getDocumentDefinition();
+
+    switch (action) {
+      case 'open':
+        pdfMake.createPdf(documentDefinition).open();
+        break;
+      case 'print':
+        pdfMake.createPdf(documentDefinition).print();
+        break;
+      case 'download':
+        pdfMake.createPdf(documentDefinition).download();
+        break;
+
+      default:
+        pdfMake.createPdf(documentDefinition).open();
+        break;
+    }
+  }
+
+  getDocumentDefinition() {
+    return {
+      content: [
+        {
+          text: 'RESUME',
+          bold: true,
+          fontSize: 20,
+          alignment: 'center',
+          margin: [0, 0, 0, 20],
+        },
+        {
+          columns: [
+            [
+              {
+                text: 'deepak',
+                style: 'name',
+              },
+              {
+                text: 'address',
+              },
+              {
+                text: 'Email : ' + 'jsdchennai@gmail.com',
+              },
+              {
+                text: 'Contant No : ' + '7358685843',
+              },
+            ],
+          ],
+        },
+        {
+          text: 'Skills',
+          style: 'header',
+        },
+        {
+          columns: [
+            {
+              ul: ['skill 1'],
+            },
+            {
+              ul: ['skill 2'],
+            },
+            {
+              ul: ['skill 3'],
+            },
+          ],
+        },
+      ],
+      info: {
+        title: 'deepak' + '_RESUME',
+        author: 'deepak',
+        subject: 'RESUME',
+        keywords: 'RESUME, ONLINE RESUME',
+      },
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 20, 0, 10],
+          decoration: 'underline',
+        },
+        name: {
+          fontSize: 16,
+          bold: true,
+        },
+        jobTitle: {
+          fontSize: 14,
+          bold: true,
+          italics: true,
+        },
+        sign: {
+          margin: [0, 50, 0, 10],
+          alignment: 'right',
+          italics: true,
+        },
+        tableHeader: {
+          bold: true,
+        },
+      },
+    };
   }
 
   ngOnInit(): void {
