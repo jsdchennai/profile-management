@@ -18,7 +18,10 @@
     ></app-work-history-form>
   </mat-step>
   <mat-step [stepControl]="skillsForm" label="Skills">
-    <app-skills-form [skillsForm]="skillsForm"></app-skills-form>
+    <app-skills-form
+      [skillsForm]="skillsForm"
+      [skills]="skills"
+    ></app-skills-form>
   </mat-step>
   <!-- <mat-step>
     <ng-template matStepLabel>Done</ng-template>

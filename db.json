@@ -1,4 +1,62 @@
 {
+  "skills": [
+    {
+      "id": 1,
+      "name": "Angular"
+    },
+    {
+      "id": 2,
+      "name": "React"
+    },
+    {
+      "id": 3,
+      "name": "HTML5"
+    },
+    {
+      "id": 4,
+      "name": "CSS3"
+    },
+    {
+      "id": 5,
+      "name": "JavaScript"
+    },
+    {
+      "id": 6,
+      "name": "TypeScript"
+    },
+    {
+      "id": 7,
+      "name": "Java"
+    },
+    {
+      "id": 8,
+      "name": "Spring"
+    },
+    {
+      "id": 9,
+      "name": "Spring Boot"
+    },
+    {
+      "id": 10,
+      "name": "Mongo Db"
+    },
+    {
+      "id": 11,
+      "name": "My SQL"
+    },
+    {
+      "id": 12,
+      "name": "Node JS"
+    },
+    {
+      "id": 13,
+      "name": "Front End"
+    },
+    {
+      "id": 14,
+      "name": "Back End"
+    }
+  ],
   "companies": [
     {
       "id": 1,

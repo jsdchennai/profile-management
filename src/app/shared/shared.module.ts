@@ -16,6 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AutoCompleteComponent } from './components/auto-complete/auto-complete.component';
+import { components } from './components';
 
 const SHARED_MODULES = [
   CommonModule,
@@ -35,9 +37,9 @@ const SHARED_MODULES = [
 ];
 
 @NgModule({
-  declarations: [AlertComponent, ConfirmationDialogComponent],
+  declarations: [...components],
   imports: [...SHARED_MODULES],
-  exports: [...SHARED_MODULES],
+  exports: [...components, ...SHARED_MODULES],
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders<SharedModule> {

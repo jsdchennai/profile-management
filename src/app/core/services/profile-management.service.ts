@@ -18,4 +18,8 @@ export class ProfileManagementService {
   getCompanies() {
     return this.http.get('/companies');
   }
+
+  getSkills() {
+    return this.http.get('/skills');
+  }
 }

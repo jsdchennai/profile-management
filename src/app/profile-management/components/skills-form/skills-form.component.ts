@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Skill } from '../../../models';
 
 @Component({
   selector: 'app-skills-form',
@@ -7,6 +8,9 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './skills-form.component.scss',
 })
 export class SkillsFormComponent implements OnInit {
+  @Input()
+  public skills: Skill[];
+
   @Input()
   public skillsForm: FormGroup;
 

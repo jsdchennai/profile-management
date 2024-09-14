@@ -4,14 +4,16 @@
       <ng-container formArrayName="skillsArray">
         <ng-container *ngFor="let skill of skillsArray.controls; let i = index">
           <ng-container [formGroupName]="i">
-            <mat-form-field class="profile-control" appearance="outline">
-              <mat-label>Skill</mat-label>
-              <input
-                matInput
-                placeholder="Enter the skill"
-                formControlName="skill"
-              />
-            </mat-form-field>
+            <app-auto-complete
+              label="Skill"
+              placeHolder="Enter a skill"
+              [formgroup]="skill"
+              formcontrolName="skill"
+              [options]="skills"
+              key="name"
+              [showRequiredValidatorError]="true"
+            >
+            </app-auto-complete>
 
             <br />
           </ng-container>
@@ -25,8 +27,6 @@
         <button mat-flat-button matStepperNext>Save</button>
       </div>
     </div>
-
-    <!-- <button mat-flat-button>Add</button> -->
 
     <div style="display: flex; justify-content: center; align-items: center">
       <button mat-mini-fab (click)="addSkills()">

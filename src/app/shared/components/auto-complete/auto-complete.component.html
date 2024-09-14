@@ -1,0 +1,23 @@
+<ng-container [formGroup]="formgroup">
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      #input
+      matInput
+      [placeholder]="placeHolder"
+      [formControlName]="formcontrolName"
+      [matAutocomplete]="auto"
+      (input)="onInput(input.value)"
+    />
+
+    <mat-autocomplete #auto="matAutocomplete">
+      @for (option of filteredOptions; track option) {
+      <mat-option [value]="option[key]">{{ option[key] }}</mat-option>
+      }
+    </mat-autocomplete>
+
+    @if (showRequiredValidatorError && checkError("required")) {
+    <mat-error>Please enter a institution</mat-error>
+    }
+  </mat-form-field>
+</ng-container>

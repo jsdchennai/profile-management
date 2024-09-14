@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProfileManagementService } from '../../../core/services';
-import { Company, Degree } from '../../../models';
+import { Company, Degree, Skill } from '../../../models';
 import { Institution } from '../../../models/institution';
 
 @Component({
@@ -15,6 +15,8 @@ export class ProfileManagementPageComponent implements OnInit {
   public degrees: Degree[] = [];
 
   public institutions: Institution[] = [];
+
+  public skills: Skill[] = [];
 
   public companies: Company[] = [];
 
@@ -67,7 +69,16 @@ export class ProfileManagementPageComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  getSkills() {
+    this.profileManagementService.getSkills().subscribe({
+      next: (res: Skill[]) => {
+        this.skills = res;
+      },
+      error: () => {},
+    });
+  }
+
+  initForm() {
     this.profileManagementForm = this.formBuilder.group({
       basicDetailsForm: this.formBuilder.group({}),
       educationDetailsForm: this.formBuilder.group({
@@ -80,9 +91,13 @@ export class ProfileManagementPageComponent implements OnInit {
         skillsArray: this.formBuilder.array([]),
       }),
     });
+  }
 
+  ngOnInit(): void {
+    this.initForm();
     this.getDegrees();
     this.getInstitutions();
     this.getCompanies();
+    this.getSkills();
   }
 }
