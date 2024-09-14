@@ -26,20 +26,18 @@ body {
   mat-form-field {
     padding-right: 10px;
   }
-}
 
-.profile-management-card {
-  width: 500px;
-  display: flex;
-  justify-content: center;
-}
-
-.profile-control {
-  width: 300px;
+  mat-form-field:last-child {
+    padding-right: 0px;
+  }
 }
 
 .d-flex {
   display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
 }
 
 .justify-content-between {
@@ -48,4 +46,17 @@ body {
 
 .align-items-center {
   align-items: center;
+}
+
+.basic-details-card,
+.skills-card {
+  width: 400px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.pr-10 {
+  padding-right: 10px;
 }

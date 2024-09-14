@@ -1,11 +1,13 @@
 <mat-stepper [linear]="isLinear" #stepper>
   <mat-step [stepControl]="basicDetailsForm" label="Basic Details">
     <app-personal-info-form
+      class="d-flex justify-content-center"
       [basicDetailsForm]="basicDetailsForm"
     ></app-personal-info-form>
   </mat-step>
   <mat-step [stepControl]="educationDetailsForm" label="Education">
     <app-education-form
+      class="d-flex justify-content-center"
       [educationDetailsForm]="educationDetailsForm"
       [degrees]="degrees"
       [institutions]="institutions"
@@ -13,12 +15,14 @@
   </mat-step>
   <mat-step [stepControl]="workHistoryForm" label="Work History">
     <app-work-history-form
+      class="d-flex justify-content-center"
       [workHistoryForm]="workHistoryForm"
       [companies]="companies"
     ></app-work-history-form>
   </mat-step>
   <mat-step [stepControl]="skillsForm" label="Skills">
     <app-skills-form
+      class="d-flex justify-content-center"
       [skillsForm]="skillsForm"
       [skills]="skills"
     ></app-skills-form>

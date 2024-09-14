@@ -1,4 +1,4 @@
-<mat-card appearance="outlined">
+<mat-card appearance="outlined" class="education-details-card">
   <mat-card-content>
     <div [formGroup]="educationDetailsForm">
       <ng-container formArrayName="educationDetailsArray">
@@ -10,7 +10,8 @@
         >
           <ng-container [formGroupName]="i">
             <div class="form-row">
-              <mat-form-field class="example-full-width" appearance="outline">
+              <!---->
+              <!-- <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Degree</mat-label>
                 <input
                   #degreeInput
@@ -32,11 +33,27 @@
                 @if (checkError(i, "degree", "required")) {
                 <mat-error>Please enter a degree</mat-error>
                 }
-              </mat-form-field>
+              </mat-form-field> -->
+
+              <app-auto-complete
+                label="Degree"
+                placeHolder="Enter the degree"
+                [formgroup]="educationDetails"
+                formcontrolName="degree"
+                [options]="degrees"
+                key="acronym"
+                [showRequiredValidatorError]="true"
+                class="pr-10"
+              >
+              </app-auto-complete>
+
+              <!---->
 
               <br />
 
-              <mat-form-field class="example-full-width" appearance="outline">
+              <!---->
+
+              <!-- <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Institution</mat-label>
                 <input
                   #institutionInput
@@ -58,7 +75,20 @@
                 @if (checkError(i, "institution", "required")) {
                 <mat-error>Please enter a institution</mat-error>
                 }
-              </mat-form-field>
+              </mat-form-field> -->
+
+              <app-auto-complete
+                label="Institution"
+                placeHolder="Enter the institution"
+                [formgroup]="educationDetails"
+                formcontrolName="institution"
+                [options]="institutions"
+                key="name"
+                [showRequiredValidatorError]="true"
+              >
+              </app-auto-complete>
+
+              <!---->
             </div>
           </ng-container>
         </ng-container>
@@ -72,6 +102,10 @@
 
     <br />
 
-    <button mat-flat-button (click)="addEducationDetails()">Add</button>
+    <div class="d-flex justify-content-center align-items-center">
+      <button mat-mini-fab (click)="addEducationDetails()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
   </mat-card-content>
 </mat-card>

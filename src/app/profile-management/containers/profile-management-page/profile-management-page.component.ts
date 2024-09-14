@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileManagementService } from '../../../core/services';
 import { Company, Degree, Skill } from '../../../models';
 import { Institution } from '../../../models/institution';
@@ -10,7 +10,7 @@ import { Institution } from '../../../models/institution';
   styleUrl: './profile-management-page.component.scss',
 })
 export class ProfileManagementPageComponent implements OnInit {
-  public isLinear = false;
+  public isLinear: boolean = false;
 
   public degrees: Degree[] = [];
 
@@ -27,7 +27,7 @@ export class ProfileManagementPageComponent implements OnInit {
   private profileManagementService = inject(ProfileManagementService);
 
   get basicDetailsForm() {
-    return this.profileManagementForm.get('basicDetialsForm') as FormGroup;
+    return this.profileManagementForm.get('basicDetailsForm') as FormGroup;
   }
 
   get educationDetailsForm() {
@@ -80,7 +80,11 @@ export class ProfileManagementPageComponent implements OnInit {
 
   initForm() {
     this.profileManagementForm = this.formBuilder.group({
-      basicDetailsForm: this.formBuilder.group({}),
+      basicDetailsForm: this.formBuilder.group({
+        name: ['', Validators.required],
+        address: ['', Validators.required],
+        phone: ['', Validators.required],
+      }),
       educationDetailsForm: this.formBuilder.group({
         educationDetailsArray: this.formBuilder.array([]),
       }),
@@ -99,5 +103,12 @@ export class ProfileManagementPageComponent implements OnInit {
     this.getInstitutions();
     this.getCompanies();
     this.getSkills();
+
+    // setInterval(() => {
+    //   console.log(
+    //     this.profileManagementForm.value,
+    //     this.profileManagementForm.valid
+    //   );
+    // }, 5000);
   }
 }

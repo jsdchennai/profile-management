@@ -9,14 +9,4 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PersonalInfoFormComponent {
   @Input()
   public basicDetailsForm: FormGroup;
-
-  private formBuilder = inject(FormBuilder);
-
-  ngOnInit(): void {
-    this.basicDetailsForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      address: ['', Validators.required],
-      phone: ['', Validators.required],
-    });
-  }
 }

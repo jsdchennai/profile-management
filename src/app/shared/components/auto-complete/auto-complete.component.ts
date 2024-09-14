@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -12,13 +12,14 @@ import {
   selector: 'app-auto-complete',
   templateUrl: './auto-complete.component.html',
   styleUrl: './auto-complete.component.scss',
+  encapsulation: ViewEncapsulation.None,
   providers: [],
 })
 export class AutoCompleteComponent {
   filteredOptions: any[] = [];
 
   @Input()
-  public showRequiredValidatorError: boolean;
+  public width: string;
 
   @Input()
   public label: string;
@@ -40,6 +41,12 @@ export class AutoCompleteComponent {
 
   @Input()
   public validators: string[] = [];
+
+  @Input()
+  public showRequiredValidatorError: boolean;
+
+  @Input()
+  public showRequiredErrorMessage: boolean;
 
   checkError(validator: string) {
     return this.formgroup.get(this.formcontrolName).hasError(validator);

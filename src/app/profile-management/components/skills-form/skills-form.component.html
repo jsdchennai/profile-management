@@ -1,4 +1,4 @@
-<mat-card appearance="outlined" class="profile-management-card">
+<mat-card appearance="outlined" class="skills-card">
   <mat-card-content>
     <div [formGroup]="skillsForm">
       <ng-container formArrayName="skillsArray">
@@ -12,10 +12,9 @@
               [options]="skills"
               key="name"
               [showRequiredValidatorError]="true"
+              width="100%"
             >
             </app-auto-complete>
-
-            <br />
           </ng-container>
         </ng-container>
       </ng-container>
@@ -28,7 +27,7 @@
       </div>
     </div>
 
-    <div style="display: flex; justify-content: center; align-items: center">
+    <div class="d-flex justify-content-center align-items-center">
       <button mat-mini-fab (click)="addSkills()">
         <mat-icon>add</mat-icon>
       </button>
