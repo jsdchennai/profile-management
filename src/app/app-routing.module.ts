@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { canMatchProfileManagementGuard } from './core/guards';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
       import('./profile-management/profile-management.module').then(
         (m) => m.ProfileManagementModule
       ),
+    canMatch: [canMatchProfileManagementGuard],
   },
 ];
 

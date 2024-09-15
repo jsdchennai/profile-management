@@ -238,32 +238,5 @@
       "degree": "Master of Commerce",
       "acronym": "M.Com"
     }
-  ],
-  "login": [
-    {
-      "name": "Allen",
-      "password": "qwerty",
-      "id": "2c24"
-    },
-    {
-      "name": "John Doe",
-      "password": "qwerty",
-      "id": "f03f"
-    },
-    {
-      "name": "Tony",
-      "password": "qwerty",
-      "id": "c880"
-    },
-    {
-      "id": "8e79",
-      "email": "jsdchennai@gmail.com",
-      "password": "qwerty"
-    },
-    {
-      "id": "6dda",
-      "email": "jsdchennai@gmail.com",
-      "password": "qwerty"
-    }
   ]
 }
