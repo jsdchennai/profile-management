@@ -19,25 +19,36 @@
         </ng-container>
       </ng-container>
 
-      <br />
+      <!-- <br /> -->
+
+      <div class="d-flex justify-content-center align-items-center">
+        <button mat-mini-fab (click)="addSkills()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
 
       <div class="d-flex justify-content-between align-items-center">
         <button mat-button matStepperPrevious>Back</button>
-        <button
-          mat-button
-          matStepperNext
-          [disabled]="!skillsForm.valid"
-          (click)="onSubmitProgressValue()"
-        >
-          Submit
-        </button>
+
+        <div>
+          <button
+            mat-button
+            matStepperNext
+            [disabled]="!skillsForm.valid"
+            (click)="onSubmitProgressValue()"
+          >
+            Submit
+          </button>
+
+          <ng-content></ng-content>
+        </div>
       </div>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center">
+    <!-- <div class="d-flex justify-content-center align-items-center">
       <button mat-mini-fab (click)="addSkills()">
         <mat-icon>add</mat-icon>
       </button>
-    </div>
+    </div> -->
   </mat-card-content>
 </mat-card>

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileManagementService } from '../../../core/services';
 import { Company, Degree, Skill } from '../../../models';
 import { Institution } from '../../../models/institution';
@@ -22,7 +22,7 @@ enum FormStatus {
   styleUrl: './profile-management-page.component.scss',
 })
 export class ProfileManagementPageComponent implements OnInit {
-  public isLinear: boolean = true;
+  public isLinear: boolean = false;
 
   public degrees: Degree[] = [];
 
@@ -184,7 +184,7 @@ export class ProfileManagementPageComponent implements OnInit {
     }
   }
 
-  getDocumentDefinition() {
+  getDocumentDefinitionOld() {
     return {
       content: [
         {
@@ -265,18 +265,138 @@ export class ProfileManagementPageComponent implements OnInit {
     };
   }
 
+  getDocumentDefinition() {
+    return {
+      content: [
+        {
+          text: 'Profile',
+          bold: true,
+          fontSize: 20,
+          alignment: 'center',
+          margin: [0, 0, 0, 20],
+        },
+        {
+          text: 'Basic Details',
+          style: 'header',
+        },
+        {
+          columns: [this.getBasicDetails()],
+        },
+        {
+          text: 'Education',
+          style: 'header',
+        },
+        {
+          columns: [this.getEducationDetails()],
+        },
+        {
+          text: 'Experience',
+          style: 'header',
+        },
+        {
+          columns: [this.getWorkHistory()],
+        },
+        {
+          text: 'Skills',
+          style: 'header',
+        },
+        {
+          columns: this.getSkillDetils(),
+        },
+      ],
+      styles: {
+        header: {
+          fontSize: 18,
+          bold: true,
+          margin: [0, 20, 0, 10],
+        },
+        name: {
+          fontSize: 16,
+          bold: true,
+        },
+        jobTitle: {
+          fontSize: 14,
+          bold: true,
+          italics: true,
+        },
+        sign: {
+          margin: [0, 50, 0, 10],
+          alignment: 'right',
+          italics: true,
+        },
+        tableHeader: {
+          bold: true,
+        },
+      },
+    };
+  }
+
+  getBasicDetails() {
+    let basicDetails = [
+      {
+        text: this.basicDetailsForm.get('name').value,
+      },
+      {
+        text: this.basicDetailsForm.get('address').value,
+      },
+      {
+        text: localStorage.getItem('email'),
+      },
+      {
+        text: this.basicDetailsForm.get('phone').value,
+      },
+    ];
+
+    return basicDetails;
+  }
+
+  getEducationDetails() {
+    let educationDetailsArray = [];
+    this.educationDetailsForm
+      .get('educationDetailsArray')
+      .value.forEach((educationDetail) => {
+        let obj = {
+          text: `${educationDetail.degree}, ${educationDetail.institution}`,
+        };
+
+        educationDetailsArray.push(obj);
+      });
+
+    return educationDetailsArray;
+  }
+
+  getWorkHistory() {
+    let workHistoryArray = [];
+    this.workHistoryForm
+      .get('workHistoryArray')
+      .value.forEach((workHistory) => {
+        let obj = {
+          text: `${workHistory.jobTitle}, ${workHistory.company}, ${workHistory.startDate}, ${workHistory.endDate}`,
+        };
+
+        workHistoryArray.push(obj);
+      });
+
+    return workHistoryArray;
+  }
+
+  getSkillDetils() {
+    let skillsArray = [];
+    this.skillsForm.get('skillsArray').value.forEach((skill) => {
+      let obj = { ul: [skill.value] };
+      skillsArray.push(obj);
+    });
+
+    console.log(skillsArray);
+
+    return skillsArray;
+  }
+
   ngOnInit(): void {
     this.initForm();
     this.getDegrees();
     this.getInstitutions();
     this.getCompanies();
     this.getSkills();
-
-    // setInterval(() => {
-    //   console.log(
-    //     this.profileManagementForm.value,
-    //     this.profileManagementForm.valid
-    //   );
-    // }, 5000);
   }
 }

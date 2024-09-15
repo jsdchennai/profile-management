@@ -10,8 +10,6 @@
       class="d-flex justify-content-center"
       [basicDetailsForm]="basicDetailsForm"
     ></app-personal-info-form>
-
-    <button (click)="generatePdf()">generate</button>
   </mat-step>
   <mat-step
     [stepControl]="educationDetailsForm"
@@ -41,6 +39,8 @@
       class="d-flex justify-content-center"
       [skillsForm]="skillsForm"
       [skills]="skills"
-    ></app-skills-form>
+    >
+      <button mat-button (click)="generatePdf()">Download Pdf</button>
+    </app-skills-form>
   </mat-step>
 </mat-stepper>
