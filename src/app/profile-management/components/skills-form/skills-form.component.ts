@@ -1,4 +1,11 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProgressPercentage, Skill } from '../../../models';
 import { ProfileProgressService } from '../../../shared/services';
@@ -14,6 +21,9 @@ export class SkillsFormComponent implements OnInit {
 
   @Input()
   public skillsForm: FormGroup;
+
+  @Output()
+  public submitted = new EventEmitter();
 
   private profileProgressService = inject(ProfileProgressService);
 
@@ -36,6 +46,10 @@ export class SkillsFormComponent implements OnInit {
       skill: ['', Validators.required],
     });
     this.skillsArray.push(skillForm);
+  }
+
+  onSubmit() {
+    this.submitted.emit();
   }
 
   ngOnInit(): void {

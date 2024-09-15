@@ -39,8 +39,11 @@
       class="d-flex justify-content-center"
       [skillsForm]="skillsForm"
       [skills]="skills"
+      (submitted)="submit()"
     >
-      <button mat-button (click)="generatePdf()">Download Pdf</button>
+      <button mat-button *ngIf="showDownloadBtn" (click)="generatePdf()">
+        Download
+      </button>
     </app-skills-form>
   </mat-step>
 </mat-stepper>
