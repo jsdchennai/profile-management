@@ -1,45 +1,64 @@
-<mat-card appearance="outlined" class="auth-card">
-  <mat-card-content>
-    <form autocomplete="off" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <mat-form-field class="width-100" appearance="outline">
-        <mat-label>Email</mat-label>
-        <input
-          matInput
-          type="email"
-          placeholder="Enter your email"
-          formControlName="email"
-        />
+<div class="login-container">
 
-        @if (emailControl?.hasError("email")) {
-        <mat-error>Please enter a valid email address</mat-error>
-        } @if (emailControl?.hasError('required')) {
-        <mat-error>Email is <strong>required</strong></mat-error>
-        }
-      </mat-form-field>
+  <div class="img-section">
+    <div class="img"></div>
+  </div>
 
-      <br />
+  <div class="form-section">
+    <mat-card appearance="outlined" class="card">
+      <mat-card-content class="content">
+        <form autocomplete="off" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <mat-form-field class="width-100" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              type="email"
+              placeholder="Enter your email"
+              formControlName="email"
+            />
+    
+            @if (emailControl?.hasError("email")) {
+            <mat-error>Please enter a valid email address</mat-error>
+            } @if (emailControl?.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+            }
+          </mat-form-field>
+    
+          <br />
+    
+          <mat-form-field class="width-100" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              placeholder="Enter your password"
+              formControlName="password"
+            />
+    
+            @if (passwordControl?.hasError('required')) {
+            <mat-error>Password is <strong>required</strong></mat-error>
+            }
+          </mat-form-field>
+    
 
-      <mat-form-field class="width-100" appearance="outline">
-        <mat-label>Password</mat-label>
-        <input
-          matInput
-          type="password"
-          placeholder="Enter your password"
-          formControlName="password"
-        />
 
-        @if (passwordControl?.hasError('required')) {
-        <mat-error>Password is <strong>required</strong></mat-error>
-        }
-      </mat-form-field>
+          <div class="btn-section">
+            <button mat-flat-button type="submit" class="login-btn">Login</button>
+            <button mat-flat-button type="submit" class="google-btn">
+              <img src="images/google.png" class="img"/>
+              Sign in with Google
+            </button>
+            <button mat-flat-button type="submit" class="facebook-btn">
+              <img src="images/facebook.png" class="img" />
+              Sign in with Facebook
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 
-      <div class="login-btn-container">
-        <button mat-flat-button type="submit">Login</button>
+</div>
 
-        <div class="sign-up-link">
-          New to PMS? <a routerLink="/sign-up"> Create an account</a>
-        </div>
-      </div>
-    </form>
-  </mat-card-content>
-</mat-card>
+
+

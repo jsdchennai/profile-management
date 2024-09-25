@@ -1,5 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+@import url('./styles/fonts.scss');
+
+$grey-variant-1: #F5F5F5;
+$grey-variant-2: #EFEFEF;
+
+$blue-variant-1: #1572FE;
+
+$black-variant-1: #000000;
+
+$white-variant-1: #FFFFFF;
+
+$border-radius-4: 4px;
+$border-radius-5: 5px;
+$border-radius-10: 10px;
+
+$width-25: 25%;
+$width-50: 50%;
+$width-75: 75%;
+$width-100: 100%;
+
+$font-inter-regular: 'Inter-Regular';
+$font-inter-medium: 'Inter-Medium';
+$font-inter-semi-bold: 'Inter-SemiBold';
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-black-bold: 900;
+
+$font-size-14: 14px;
+$font-size-16: 16px;
+
+$text-lowercase:'lowercase';
+$text-uppercase:'uppercase';
+
+@mixin fontstyle($font-family, $fontsize, $weight, $color) {
+  @if ($font-family !=null) {
+    font-family: ($font-family) ;
+  }
+
+  @if ($fontsize !=null) {
+    font-size: ($fontsize) ;
+  }
+
+  @if ($weight !=null) {
+    font-weight: ($weight) ;
+  }
+
+  @if ($color !=null) {
+    color: ($color) ;
+  }
+}
+
+
+@mixin flex($flex-direction, $align-items, $justify-content) {
+  display: flex !important;
+
+  @if ($flex-direction !=null) {
+    flex-direction: ($flex-direction);
+  }
+
+  @if ($align-items !=null) {
+    align-items: ($align-items);
+  }
+
+  @if ($justify-content !=null) {
+    justify-content: ($justify-content);
+  }
+}
+
 html,
 body {
   height: 100%;
@@ -7,8 +81,9 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: $font-inter-regular, "Helvetica Neue", sans-serif;
 }
+
 
 .width-100 {
   width: 100%;
@@ -63,4 +138,76 @@ body {
 
 .pr-10 {
   padding-right: 10px;
+}
+
+
+.login-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .img-section {
+    width: 40%;
+    height: 100%;
+    .img {
+      width: 100%;
+      height: 100%;
+      background-image: url('../public/images/login.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    background: $grey-variant-1;
+    height: 100%;
+
+    .card {
+      width: 468px;
+      height: 482px;
+
+      .content {
+        padding: 60px;
+
+        .btn-section {          
+          width: $width-100;
+
+          .login-btn {
+            @include fontstyle($font-inter-semi-bold, $font-size-16, $font-weight-semi-bold, $white-variant-1);
+            width: $width-100;
+            border-radius: $border-radius-5;
+            background:$blue-variant-1;
+            text-transform: $text-uppercase; 
+            margin-top: 30px;         
+          }
+
+          .google-btn {
+            margin-top: 30px;     
+          }
+  
+          .facebook-btn {
+            margin-top: 20px;     
+          }
+
+          .google-btn, .facebook-btn {
+            @include fontstyle($font-inter-medium, $font-size-14, $font-weight-medium, $black-variant-1);
+            width: $width-100;
+            background: $grey-variant-2;
+            border-radius: $border-radius-4;    
+                        
+            .img {
+              width: 18px;
+              height: 18px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
